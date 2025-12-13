@@ -1,5 +1,5 @@
 import getMemo from "./get-memo";
-import { MemoObject } from "./memo-types";
+import type { MemoObject } from "./memo-types";
 
 export default function getMemoItem<T = unknown>(params: string): T {
   const path = params.split(".");
