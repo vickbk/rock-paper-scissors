@@ -23,6 +23,8 @@ export const GameSpot = () => {
       <Heading className="sr-only">Welcomen to {titles[game]}</Heading>
       <Score />
       {components[game]}
+
+      <Link to={"/game"}>Change Game</Link>
       <Link to={"rules"}>Rules</Link>
       <Outlet />
     </Article>
