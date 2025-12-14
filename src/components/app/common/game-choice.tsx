@@ -1,11 +1,14 @@
-import { degToRad } from "../../../libs/angles-conversion";
-import { IconRock } from "./icons/icon-rock";
+import { degToRad } from "../../../libs/angles-helper";
 
-export const GameChoice = () => {
-  const angle = degToRad(18);
-  const transX = (Math.round(Math.cos(angle) * 100) + 100) / 2;
-  const transY = (100 - Math.round(Math.sin(angle) * 100)) / 2;
-  console.log({ transX, transY, angle });
+export const GameChoice = ({
+  angle,
+  children,
+}: {
+  angle: number;
+  children: React.ReactNode;
+}) => {
+  const transX = (Math.round(Math.cos(degToRad(angle)) * 100) + 100) / 2;
+  const transY = (100 - Math.round(Math.sin(degToRad(angle)) * 100)) / 2;
   return (
     <li
       className={`absolute size-1 choice outline`}
@@ -20,9 +23,9 @@ export const GameChoice = () => {
     >
       <button
         type="button"
-        className="border-16 rounded-full p-6 foreground c-background border-amber-300 m-auto -translate-1/2 "
+        className="border-12 rounded-full size-24 grid place-items-center foreground c-background border-amber-300 absolute -translate-1/2"
       >
-        <IconRock />
+        <span className=" scale-70">{children}</span>
       </button>
     </li>
   );
