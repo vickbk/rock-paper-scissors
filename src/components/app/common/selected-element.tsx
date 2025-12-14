@@ -10,9 +10,9 @@ export const SelectedElement = ({
   children: ReactNode;
 }) => {
   return (
-    <Section>
-      <Heading>{title}</Heading>
+    <Section className="grid justify-items-center gap-4 md:scale-200">
       {children}
+      <Heading className="md:row-start-1">{title}</Heading>
     </Section>
   );
 };
