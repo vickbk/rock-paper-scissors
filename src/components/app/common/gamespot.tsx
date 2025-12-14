@@ -25,16 +25,24 @@ export const GameSpot = () => {
   };
 
   return (
-    <Article>
+    <Article className="p-6 grid grid-rows-[auto_1fr_auto] min-h-screen">
       <Heading className="sr-only" ref={selectedGame}>
         Welcomen to {titles[game]}
       </Heading>
       <Score />
       {components[game]}
 
-      <Link to={"/game"}>Change Game</Link>
-      <Link to={"rules"}>Rules</Link>
-      <Outlet />
+      <div className="flex justify-between gap-4 uppercase">
+        {[
+          ["/game", "Change Game"],
+          ["rules", "Rules"],
+        ].map(([path, text]) => (
+          <Link className="p-4 px-6 border-2 rounded-lg" to={path} key={text}>
+            {text}
+          </Link>
+        ))}
+        <Outlet />
+      </div>
     </Article>
   );
 };
