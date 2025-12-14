@@ -30,7 +30,7 @@ export const GameSpot = () => {
         Welcomen to {titles[game]}
       </Heading>
       <Score />
-      {components[game]}
+      <div className="place-self-center">{components[game]}</div>
 
       <div className="flex justify-between gap-4 uppercase">
         {[
