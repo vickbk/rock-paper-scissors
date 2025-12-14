@@ -1,0 +1,6 @@
+.choice {
+  --transX: attr(data-left type(<percentage>), var(--transX, 0));
+  --transY: attr(data-top type(<percentage>), var(--transY, 0%));
+  left: var(--transX);
+  top: var(--transY);
+}
