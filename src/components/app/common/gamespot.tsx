@@ -4,6 +4,7 @@ import { Heading } from "../../shared/Heading";
 import { DefaultGame } from "../default/default-game";
 import { AdvancedGame } from "../advanced/advanced-game";
 import { Score } from "./score";
+import setMemoItem from "../../../libs/memorization/set-item";
 
 export const GameSpot = () => {
   const { game } = useParams() as { game: "default" | "advanced" };
@@ -18,9 +19,16 @@ export const GameSpot = () => {
     advanced: <AdvancedGame />,
   };
 
+  const selectedGame = (node: HTMLHeadingElement) => {
+    if (!node) return;
+    setMemoItem("game-choice", game);
+  };
+
   return (
     <Article>
-      <Heading className="sr-only">Welcomen to {titles[game]}</Heading>
+      <Heading className="sr-only" ref={selectedGame}>
+        Welcomen to {titles[game]}
+      </Heading>
       <Score />
       {components[game]}
 

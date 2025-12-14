@@ -8,9 +8,5 @@ export const HomePage = () => {
     const selectedGame = getMemoItem("game-choice");
     navigate(`/game/${selectedGame || ""}`);
   }, [navigate]);
-  return (
-    <div>
-      <Outlet />
-    </div>
-  );
+  return <Outlet />;
 };
