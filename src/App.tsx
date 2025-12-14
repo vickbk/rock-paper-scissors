@@ -17,27 +17,28 @@ function App() {
   return (
     <Router>
       <HeadingCtx value={heading}>
-        <Main pageHasH1={false}>
+        <Main pageHasH1={false} className="w-full">
           <Heading className="sr-only">Rock paper scissors App</Heading>
-        </Main>
-        <Routes>
-          <Route path="" element={<HomePage />} />
-          <Route path="/game">
-            <Route index element={<GameStyle />} />
-            <Route path=":game" element={<GameSpot />}>
-              <Route path="rules" element={<Rules />} />
+
+          <Routes>
+            <Route path="" element={<HomePage />} />
+            <Route path="/game">
+              <Route index element={<GameStyle />} />
+              <Route path=":game" element={<GameSpot />}>
+                <Route path="rules" element={<Rules />} />
+              </Route>
             </Route>
-          </Route>
-          <Route
-            path="*"
-            element={
-              <ErrorElement
-                error={new Error("404 | Page not found")}
-                reset={() => {}}
-              />
-            }
-          />
-        </Routes>
+            <Route
+              path="*"
+              element={
+                <ErrorElement
+                  error={new Error("404 | Page not found")}
+                  reset={() => {}}
+                />
+              }
+            />
+          </Routes>
+        </Main>
       </HeadingCtx>
     </Router>
   );
