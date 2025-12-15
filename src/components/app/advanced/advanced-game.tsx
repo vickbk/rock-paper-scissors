@@ -11,7 +11,7 @@ import type {
 } from "../../../libs/types/game-types";
 import { GameResults } from "../common/game-results";
 
-export const AdvancedGame = () => {
+export const AdvancedGame = ({ setPlayed }: { setPlayed: () => void }) => {
   const CHOICES: GameChoices = [
     [<IconScissors title="Scissors" />, "scissors"],
     [<IconSpock title="Spock" />, "spock"],
@@ -20,16 +20,20 @@ export const AdvancedGame = () => {
     [<IconPaper title="Paper" />, "paper"],
   ];
   const [choice, setChoice] = useState<null | AdvancedOptions>(null);
+  const onPlay = (choice: AdvancedOptions | null) => {
+    setPlayed();
+    setTimeout(() => setChoice(choice), 2000);
+  };
   return (
     <>
       {!choice && (
         <div className="md:translate-y-12">
-          <GameOptions choices={CHOICES} start={90} setChoice={setChoice}>
+          <GameOptions choices={CHOICES} start={90} setChoice={onPlay}>
             <img src="/assets/images/bg-pentagon.svg" alt="" />
           </GameOptions>
         </div>
       )}
-      {choice && <GameResults choice={choice} setChoice={setChoice} />}
+      {choice && <GameResults choice={choice} setChoice={onPlay} />}
     </>
   );
 };

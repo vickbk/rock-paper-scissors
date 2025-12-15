@@ -10,20 +10,24 @@ import { IconRock } from "../common/icons/icon-rock";
 import { IconScissors } from "../common/icons/icon-scissors";
 import { GameResults } from "../common/game-results";
 
-export const DefaultGame = () => {
+export const DefaultGame = ({ setPlayed }: { setPlayed: () => void }) => {
   const CHOICES: GameChoices = [
     [<IconScissors title="Scissors" />, "scissors"],
     [<IconRock title="Rock" />, "rock"],
     [<IconPaper title="Paper" />, "paper"],
   ];
   const [choice, setChoice] = useState<null | DefaultOptions>(null);
+  const onPlay = (choice: DefaultOptions | null) => {
+    setPlayed();
+    setTimeout(() => setChoice(choice), 2000);
+  };
   return (
     <>
       {!choice && (
         <GameOptions
           choices={CHOICES}
           start={270}
-          setChoice={setChoice as (option: AdvancedOptions) => void}
+          setChoice={onPlay as (option: AdvancedOptions) => void}
         >
           <img
             className="translate-y-1/5 relative -z-10"
@@ -32,7 +36,7 @@ export const DefaultGame = () => {
           />
         </GameOptions>
       )}
-      {choice && <GameResults choice={choice} setChoice={setChoice} />}
+      {choice && <GameResults choice={choice} setChoice={onPlay} />}
     </>
   );
 };

@@ -17,9 +17,15 @@ export const GameSpot = () => {
     advanced: "Rock Paper Scissors Lizard and Spock",
   };
 
+  const [played, setPlayed] = useState(false);
+  const addPlayedPlayAnimation = () => {
+    setPlayed(!played);
+    setTimeout(() => setPlayed(played), 2000);
+  };
+
   const components = {
-    default: <DefaultGame />,
-    advanced: <AdvancedGame />,
+    default: <DefaultGame setPlayed={addPlayedPlayAnimation} />,
+    advanced: <AdvancedGame setPlayed={addPlayedPlayAnimation} />,
   };
 
   const selectedGame = (node: HTMLHeadingElement) => {
@@ -40,7 +46,13 @@ export const GameSpot = () => {
       </Heading>
       <ScoreContext value={[score, saveScore]}>
         <Score />
-        <div className="place-self-center">{components[game]}</div>
+        <div
+          className={`place-self-center transition-transform duration-2000 ${
+            played && "played"
+          }`}
+        >
+          {components[game]}
+        </div>
 
         <div className="flex justify-between gap-4 uppercase">
           {[
