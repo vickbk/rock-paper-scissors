@@ -1,14 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Article } from "../../shared/Article";
 import { Heading } from "../../shared/Heading";
-import { CustomDetails } from "../../shared/CustomDetails";
 import { GAMES } from "../../../libs/games-details";
 
 export const GameStyle = () => {
   const games = [GAMES.default, GAMES.advanced];
   return (
     <Article className="text-center grid gap-4 p-4 grid-rows-[auto_1fr_auto] min-h-screen">
-      <Heading className="uppercase font-semibold text-2xl">
+      <Heading className="uppercase font-semibold text-4xl">
         Choose your game style
       </Heading>
       <div className="grid gap-4 md:grid-cols-2 place-items-center">
@@ -16,7 +15,7 @@ export const GameStyle = () => {
           <div key={name}>
             <Link className="grid gap-4" to={`/game/${name}`}>
               <img src={"/assets/images/" + image} alt={alt} />
-              <span className="capitalize p-4 outline justify-self-center rounded-lg active-button">
+              <span className="capitalize p-4 px-8 outline-2 out-gray-600 justify-self-center rounded-lg active-button">
                 {name} mode
               </span>
             </Link>
@@ -24,24 +23,13 @@ export const GameStyle = () => {
           </div>
         ))}
       </div>
-      <CustomDetails className="justify-self-center">
-        <summary className="cursor-pointer p-4 outline rounded-lg">
-          Learn more
-        </summary>
-        <div className="p-4 grid gap-8">
-          {games.map(({ type: name, description, title }) => (
-            <Article key={title} className="grid gap-4">
-              <Heading className="text-xl font-semibold">{`${title} (${name})`}</Heading>
-
-              <ul>
-                {description.split(", ").map((desc) => (
-                  <li key={desc}>{desc}</li>
-                ))}
-              </ul>
-            </Article>
-          ))}
-        </div>
-      </CustomDetails>
+      <Link
+        className="justify-self-center p-4 px-8 outline-2 out-gray-600 rounded-lg"
+        to={"rules"}
+      >
+        Learn more
+      </Link>
+      <Outlet />
     </Article>
   );
 };

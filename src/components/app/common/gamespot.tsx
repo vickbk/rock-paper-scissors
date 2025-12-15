@@ -47,7 +47,11 @@ export const GameSpot = () => {
             ["/game", "Change Game"],
             ["rules", "Rules"],
           ].map(([path, text]) => (
-            <Link className="p-4 px-6 border-2 rounded-lg" to={path} key={text}>
+            <Link
+              className="p-4 px-6 border-2 b-gray-600 rounded-lg"
+              to={path}
+              key={text}
+            >
               {text}
             </Link>
           ))}

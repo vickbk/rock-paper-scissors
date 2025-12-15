@@ -19,15 +19,17 @@ $colorsMap: (
   // Neutral
   navy-900: 229 25% 31%,
   gray-600: 246 11% 37%,
-  bg-strart: 214 47% 23%,
+  bg-start: 214 47% 23%,
   bg-end: 237 48% 15%,
+
+  white: 0 100% 100%,
   background: var(--background),
   foreground: var(--foreground)
 );
 
 $primary-color: map.get($colorsMap, navy-900);
 $link-color: map.get($colorsMap, blue-500);
-$text-color: map.get($colorsMap, grey-600);
+$text-color: map.get($colorsMap, white);
 $accent-color: map.get($colorsMap, blue-500);
 
 $exluded-variables: background foreground;

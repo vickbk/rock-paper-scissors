@@ -10,7 +10,7 @@ import { HomePage } from "./components/app/common/home-page";
 import { GameStyle } from "./components/app/common/game-style";
 import { ErrorElement } from "./components/common/error-element";
 import { GameSpot } from "./components/app/common/gamespot";
-import { Rules } from "./components/app/common/rules";
+import { Rules } from "./components/app/common/rules/rules";
 
 function App() {
   const heading = useContext(HeadingCtx);
@@ -23,7 +23,9 @@ function App() {
           <Routes>
             <Route path="" element={<HomePage />} />
             <Route path="/game">
-              <Route index element={<GameStyle />} />
+              <Route path="" element={<GameStyle />}>
+                <Route path="rules" element={<Rules />} />
+              </Route>
               <Route path=":game" element={<GameSpot />}>
                 <Route path="rules" element={<Rules />} />
               </Route>
