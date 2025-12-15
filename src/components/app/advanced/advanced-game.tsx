@@ -10,6 +10,7 @@ import type {
   GameChoices,
 } from "../../../libs/types/game-types";
 import { GameResults } from "../common/game-results";
+import bgPentagon from "@assets/images/bg-pentagon.svg";
 
 export const AdvancedGame = ({ setPlayed }: { setPlayed: () => void }) => {
   const CHOICES: GameChoices = [
@@ -30,7 +31,7 @@ export const AdvancedGame = ({ setPlayed }: { setPlayed: () => void }) => {
       {!choice && (
         <div className="md:translate-y-12">
           <GameOptions choices={CHOICES} start={90} setChoice={onPlay}>
-            <img src="/assets/images/bg-pentagon.svg" alt="" />
+            <img src={bgPentagon} alt="" />
           </GameOptions>
         </div>
       )}

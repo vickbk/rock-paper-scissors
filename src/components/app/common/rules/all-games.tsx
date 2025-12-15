@@ -3,6 +3,7 @@ import { GAMES } from "../../../../libs/games-details";
 import { Article } from "../../../shared/Article";
 import { Heading } from "../../../shared/Heading";
 import { SROnly } from "../../../shared/SROnly";
+import closeIcon from "@assets/images/icon-close.svg";
 
 export const AllGames = () => {
   const games = [GAMES.default, GAMES.advanced];
@@ -25,7 +26,7 @@ export const AllGames = () => {
         className="justify-self-center md:justify-self-end md:row-start-1 active-button p-4 rounded-full"
       >
         <SROnly>Go back to game selection</SROnly>
-        <img src="/assets/images/icon-close.svg" alt={""} />
+        <img src={closeIcon} alt={""} />
       </Link>
     </div>
   );

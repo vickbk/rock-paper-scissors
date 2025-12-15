@@ -15,7 +15,7 @@ import { Rules } from "./components/app/common/rules/rules";
 function App() {
   const heading = useContext(HeadingCtx);
   return (
-    <Router>
+    <Router basename="/rock-paper-scissors">
       <HeadingCtx value={heading}>
         <Main pageHasH1={false} className="w-full">
           <Heading className="sr-only">Rock paper scissors App</Heading>

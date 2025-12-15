@@ -9,6 +9,7 @@ import { IconPaper } from "../common/icons/icon-paper";
 import { IconRock } from "../common/icons/icon-rock";
 import { IconScissors } from "../common/icons/icon-scissors";
 import { GameResults } from "../common/game-results";
+import { default as bgTriangle } from "@assets/images/bg-triangle.svg";
 
 export const DefaultGame = ({ setPlayed }: { setPlayed: () => void }) => {
   const CHOICES: GameChoices = [
@@ -32,7 +33,7 @@ export const DefaultGame = ({ setPlayed }: { setPlayed: () => void }) => {
         >
           <img
             className="translate-y-1/5 relative -z-10"
-            src="/assets/images/bg-triangle.svg"
+            src={bgTriangle}
             alt=""
           />
         </GameOptions>
