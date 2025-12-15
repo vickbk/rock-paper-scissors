@@ -1,12 +1,12 @@
 :root {
-  --ff-plus-jakarta: "Plus Jakarta Sans", sans-serif;
+  --ff-barlow: "Barlow Semi Condensed", sans-serif;
 }
 
 @theme inline {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
-  --font-sans: var(--ff-plus-jakarta);
-  --font-mono: var(--ff-plus-jakarta);
+  --font-sans: var(--ff-barlow);
+  --font-mono: var(--ff-barlow);
 }
 
 /* Styles for users who prefer reduced motion */
