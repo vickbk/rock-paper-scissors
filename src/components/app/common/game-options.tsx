@@ -19,7 +19,7 @@ export const GameOptions = ({
 }) => {
   const STEP = getStepAngle(choices.length);
   return (
-    <div className="relative rounded-full aspect-square m-16">
+    <div className="relative rounded-full aspect-square m-16 sm:m-0">
       <ul className="z-10 isolate">
         {choices.map(([ICON, choice], key) => (
           <GameChoice angle={start + STEP * key} key={key}>

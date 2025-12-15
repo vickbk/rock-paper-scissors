@@ -23,9 +23,11 @@ export const AdvancedGame = () => {
   return (
     <>
       {!choice && (
-        <GameOptions choices={CHOICES} start={90} setChoice={setChoice}>
-          <img src="/assets/images/bg-pentagon.svg" alt="" />
-        </GameOptions>
+        <div className="md:translate-y-12">
+          <GameOptions choices={CHOICES} start={90} setChoice={setChoice}>
+            <img src="/assets/images/bg-pentagon.svg" alt="" />
+          </GameOptions>
+        </div>
       )}
       {choice && <GameResults choice={choice} setChoice={setChoice} />}
     </>

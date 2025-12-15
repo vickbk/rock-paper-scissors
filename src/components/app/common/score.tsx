@@ -16,7 +16,7 @@ export const Score = () => {
   const [score, saveScore] = useContext(ScoreContext);
   const resetScore = () => saveScore(0);
   return (
-    <Article className="flex justify-between items-center w-full border-3 rounded-lg p-4 uppercase font-semibold leading-4">
+    <Article className="flex justify-between items-center w-full border-3 rounded-lg md:rounded-2xl max-w-150 mx-auto p-4 uppercase font-semibold leading-4">
       <Heading className="sr-only">You are playing</Heading>
       <ul className="grid">
         {games[game].map((name) => (
