@@ -15,7 +15,7 @@ export const GameStyle = () => {
           <div key={name}>
             <Link className="grid gap-4" to={`/game/${name}`}>
               <img src={"/assets/images/" + image} alt={alt} />
-              <span className="capitalize p-4 px-8 outline-2 out-gray-600 justify-self-center rounded-lg active-button">
+              <span className="uppercase p-4 px-8 outline-2 out-gray-600 justify-self-center rounded-lg active-button font-semibold">
                 {name} mode
               </span>
             </Link>
@@ -24,7 +24,7 @@ export const GameStyle = () => {
         ))}
       </div>
       <Link
-        className="justify-self-center p-4 px-8 outline-2 out-gray-600 rounded-lg"
+        className="justify-self-center p-4 px-8 outline-2 out-gray-600 rounded-lg uppercase font-semibold"
         to={"rules"}
       >
         Learn more

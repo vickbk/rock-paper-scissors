@@ -3,7 +3,6 @@ import { getComputerChoice } from "../../../libs/games-details";
 import { Article } from "../../shared/Article";
 import { Heading } from "../../shared/Heading";
 import { IconLizard } from "./icons/icon-lizard";
-import { OptionElement } from "./option-element";
 import { SelectedElement } from "./selected-element";
 import type { AdvancedOptions } from "../../../libs/types/game-types";
 import { IconRock } from "./icons/icon-rock";
@@ -32,9 +31,7 @@ export const GameResults = ({
     <Article className="grid grid-cols-2 md:grid-cols-3 md:gap-8 w-full text-center uppercase">
       <Heading className="sr-only">The results are as follow</Heading>
       <SelectedElement title="You picked">
-        <div>
-          <OptionElement>{icons[choice]}</OptionElement>
-        </div>
+        <div>{icons[choice]}</div>
       </SelectedElement>
       <ResultsManager {...{ choice, computerChoice }}>
         <button
@@ -46,9 +43,7 @@ export const GameResults = ({
         </button>
       </ResultsManager>
       <SelectedElement title="The house picked">
-        <div>
-          <OptionElement>{icons[computerChoice]}</OptionElement>
-        </div>
+        <div>{icons[computerChoice]}</div>
       </SelectedElement>
     </Article>
   );

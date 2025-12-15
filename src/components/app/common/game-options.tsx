@@ -4,7 +4,6 @@ import type {
   GameChoices,
 } from "../../../libs/types/game-types";
 import { GameChoice } from "./game-choice";
-import { OptionElement } from "./option-element";
 
 export const GameOptions = ({
   choices,
@@ -28,7 +27,7 @@ export const GameOptions = ({
               type="button"
               className=" absolute -translate-1/2"
             >
-              <OptionElement>{ICON}</OptionElement>
+              {ICON}
             </button>
           </GameChoice>
         ))}
