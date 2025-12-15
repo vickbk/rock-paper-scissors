@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { getComputerChoice } from "../../../libs/games-details";
+import { getComputerChoice, getWinner } from "../../../libs/games-details";
 import { Article } from "../../shared/Article";
 import { Heading } from "../../shared/Heading";
 import { IconLizard } from "./icons/icon-lizard";
@@ -27,7 +27,7 @@ export const GameResults = ({
   };
   const { game } = useParams() as { game: "default" | "advanced" };
   const computerChoice = getComputerChoice(game);
-
+  const { message, details } = getWinner({ choice, computerChoice });
   return (
     <Article className="grid grid-cols-2 md:grid-cols-3 md:gap-8 w-full text-center uppercase">
       <Heading className="sr-only">The results are as follow</Heading>
@@ -37,8 +37,8 @@ export const GameResults = ({
         </div>
       </SelectedElement>
       <Article className="col-start-1 col-span-full row-start-2 mt-16 md:col-start-2 md:row-start-1 md:col-span-1 md:mt-0">
-        <Heading className="sr-only">Spock vaporizes scissors</Heading>
-        <p className="text-5xl font-bold">You lose</p>
+        <Heading className="sr-only">{details}</Heading>
+        <p className="text-5xl font-bold">{message}</p>
         <button
           onClick={() => setChoice(null)}
           type="button"

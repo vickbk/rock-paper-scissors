@@ -76,3 +76,39 @@ export function getComputerChoice(gamestyle: "default" | "advanced") {
   const currentGame = GAME_CHOICES[gamestyle];
   return currentGame[getRandomInt(0, currentGame.length)];
 }
+
+export function getWinner({
+  choice,
+  computerChoice,
+}: Record<"choice" | "computerChoice", AdvancedOptions>) {
+  if (choice === computerChoice)
+    return {
+      message: "Draw",
+      details: `No winner, you both chose ${choice}`,
+    };
+  const player = isWinner({ player: choice, opponent: computerChoice });
+  if (player)
+    return {
+      message: "You Win",
+      details: player.details,
+    };
+  const computer = isWinner({ player: computerChoice, opponent: choice });
+
+  return {
+    message: "You loose",
+    details: computer && computer.details,
+  };
+}
+
+export function isWinner({
+  player,
+  opponent,
+}: Record<"player" | "opponent", AdvancedOptions>) {
+  const playerChoice = GAME_RULES.find(({ name }) => name === player)!;
+  const beatsResults = playerChoice.beats.find(({ name }) => name === opponent);
+  if (beatsResults)
+    return {
+      details: beatsResults.message,
+    };
+  return false;
+}
