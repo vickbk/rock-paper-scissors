@@ -32,7 +32,7 @@ export const DefaultGame = () => {
           />
         </GameOptions>
       )}
-      {choice && <GameResults />}
+      {choice && <GameResults choice={choice} setChoice={setChoice} />}
     </>
   );
 };

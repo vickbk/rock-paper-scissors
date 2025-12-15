@@ -27,7 +27,7 @@ export const AdvancedGame = () => {
           <img src="/assets/images/bg-pentagon.svg" alt="" />
         </GameOptions>
       )}
-      {choice && <GameResults />}
+      {choice && <GameResults choice={choice} setChoice={setChoice} />}
     </>
   );
 };
