@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { getComputerChoice } from "../../../libs/games-details";
+import { getComputerChoice, getWinner } from "../../../libs/games-details";
 import { Article } from "../../shared/Article";
 import { Heading } from "../../shared/Heading";
 import { IconLizard } from "./icons/icon-lizard";
@@ -27,13 +27,16 @@ export const GameResults = ({
   };
   const { game } = useParams() as { game: "default" | "advanced" };
   const computerChoice = getComputerChoice(game);
+  const results = getWinner({ choice, computerChoice });
   return (
     <Article className="grid grid-cols-2 md:grid-cols-3 md:gap-8 w-full text-center uppercase">
       <Heading className="sr-only">The results are as follow</Heading>
       <SelectedElement title="You picked">
-        <div>{icons[choice]}</div>
+        <div className={`${results.add === 1 ? "winner" : ""}`}>
+          {icons[choice]}
+        </div>
       </SelectedElement>
-      <ResultsManager {...{ choice, computerChoice }}>
+      <ResultsManager {...results}>
         <button
           onClick={() => setChoice(null)}
           type="button"
@@ -43,7 +46,9 @@ export const GameResults = ({
         </button>
       </ResultsManager>
       <SelectedElement title="The house picked">
-        <div>{icons[computerChoice]}</div>
+        <div className={`${results.add === -1 ? "winner" : ""}`}>
+          {icons[computerChoice]}
+        </div>
       </SelectedElement>
     </Article>
   );

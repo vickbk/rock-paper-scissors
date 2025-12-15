@@ -98,7 +98,7 @@ export function getWinner({
 
   return {
     message: "You loose",
-    details: computer && computer.details,
+    details: (computer && computer.details) || "",
     add: -1,
   };
 }
