@@ -2,6 +2,9 @@ import { useParams } from "react-router-dom";
 import { Article } from "../../shared/Article";
 import { Heading } from "../../shared/Heading";
 import { SROnly } from "../../shared/SROnly";
+import { useContext } from "react";
+import { ScoreContext } from "../../../contexts/ScoreContext";
+import { Icon } from "../../common/bi-icon";
 
 export const Score = () => {
   const { game } = useParams() as { game: "default" | "advanced" };
@@ -10,6 +13,8 @@ export const Score = () => {
     default: common,
     advanced: [...common, "Lizard", "Spock"],
   };
+  const [score, saveScore] = useContext(ScoreContext);
+  const resetScore = () => saveScore(0);
   return (
     <Article className="flex justify-between items-center w-full border-3 rounded-lg p-4 uppercase font-semibold leading-4">
       <Heading className="sr-only">You are playing</Heading>
@@ -18,11 +23,14 @@ export const Score = () => {
           <li key={name}>{name}</li>
         ))}
       </ul>
-      <Article className="p-4 px-6 rounded-lg text-center foreground c-background">
+      <Article className="p-4 px-6 rounded-lg text-center foreground c-background relative">
         <Heading>
           <SROnly>The current</SROnly> score <SROnly>is:</SROnly>
         </Heading>
-        <p className="text-6xl mt-2">12</p>
+        <p className="text-6xl mt-2">{score + ""}</p>
+        <button className="absolute inset-0" type="button" onClick={resetScore}>
+          <Icon name="arrow-counterclockwise"></Icon>
+        </button>
       </Article>
     </Article>
   );

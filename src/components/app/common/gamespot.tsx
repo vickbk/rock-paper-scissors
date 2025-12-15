@@ -5,10 +5,13 @@ import { DefaultGame } from "../default/default-game";
 import { AdvancedGame } from "../advanced/advanced-game";
 import { Score } from "./score";
 import setMemoItem from "../../../libs/memorization/set-item";
+import { useState } from "react";
+import { ScoreContext } from "../../../contexts/ScoreContext";
+import getMemoItem from "../../../libs/memorization/get-item";
 
 export const GameSpot = () => {
   const { game } = useParams() as { game: "default" | "advanced" };
-
+  const [score, setScore] = useState(0);
   const titles = {
     default: "Rock Paper Scissors",
     advanced: "Rock Paper Scissors Lizard and Spock",
@@ -22,6 +25,12 @@ export const GameSpot = () => {
   const selectedGame = (node: HTMLHeadingElement) => {
     if (!node) return;
     setMemoItem("game-choice", game);
+    setScore(getMemoItem<number>(`score.${game}`) || 0);
+  };
+
+  const saveScore = (score: number) => {
+    setScore(score);
+    setMemoItem(`score.${game}`, score);
   };
 
   return (
@@ -29,20 +38,22 @@ export const GameSpot = () => {
       <Heading className="sr-only" ref={selectedGame}>
         Welcomen to {titles[game]}
       </Heading>
-      <Score />
-      <div className="place-self-center">{components[game]}</div>
+      <ScoreContext value={[score, saveScore]}>
+        <Score />
+        <div className="place-self-center">{components[game]}</div>
 
-      <div className="flex justify-between gap-4 uppercase">
-        {[
-          ["/game", "Change Game"],
-          ["rules", "Rules"],
-        ].map(([path, text]) => (
-          <Link className="p-4 px-6 border-2 rounded-lg" to={path} key={text}>
-            {text}
-          </Link>
-        ))}
-        <Outlet />
-      </div>
+        <div className="flex justify-between gap-4 uppercase">
+          {[
+            ["/game", "Change Game"],
+            ["rules", "Rules"],
+          ].map(([path, text]) => (
+            <Link className="p-4 px-6 border-2 rounded-lg" to={path} key={text}>
+              {text}
+            </Link>
+          ))}
+          <Outlet />
+        </div>
+      </ScoreContext>
     </Article>
   );
 };

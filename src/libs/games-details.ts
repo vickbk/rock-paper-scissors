@@ -12,7 +12,7 @@ export const GAMES = {
     type: "advanced",
     image: "image-rules-bonus.svg",
     description:
-      "Scissors cuts Paper, Paper covers Rock, Rock crushes Lizard, Lizard poisons Spock, Spock smashes Scissors, Scissors decapitates Lizard, Lizard eats Paper, Paper disproves Spock, Spock vaporizes Rock and as it always has, Rock crushes his Scissors",
+      "Scissors cuts Paper, Paper covers Rock, Rock crushes Lizard, Lizard poisons Spock, Spock smashes Scissors, Scissors decapitates Lizard, Lizard eats Paper, Paper disproves Spock, Spock vaporizes Rock, Rock crushes Scissors",
     title: "Rock Paper Scissors Lizard Spock",
   },
 } as const;
@@ -85,18 +85,21 @@ export function getWinner({
     return {
       message: "Draw",
       details: `No winner, you both chose ${choice}`,
+      add: 0,
     };
   const player = isWinner({ player: choice, opponent: computerChoice });
   if (player)
     return {
       message: "You Win",
       details: player.details,
+      add: 1,
     };
   const computer = isWinner({ player: computerChoice, opponent: choice });
 
   return {
     message: "You loose",
     details: computer && computer.details,
+    add: -1,
   };
 }
 

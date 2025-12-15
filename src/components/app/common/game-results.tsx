@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { getComputerChoice, getWinner } from "../../../libs/games-details";
+import { getComputerChoice } from "../../../libs/games-details";
 import { Article } from "../../shared/Article";
 import { Heading } from "../../shared/Heading";
 import { IconLizard } from "./icons/icon-lizard";
@@ -10,6 +10,7 @@ import { IconRock } from "./icons/icon-rock";
 import { IconPaper } from "./icons/icon-paper";
 import { IconScissors } from "./icons/icon-scissors";
 import { IconSpock } from "./icons/icon-spock";
+import { ResultsManager } from "./results-manager";
 
 export const GameResults = ({
   setChoice,
@@ -27,7 +28,6 @@ export const GameResults = ({
   };
   const { game } = useParams() as { game: "default" | "advanced" };
   const computerChoice = getComputerChoice(game);
-  const { message, details } = getWinner({ choice, computerChoice });
   return (
     <Article className="grid grid-cols-2 md:grid-cols-3 md:gap-8 w-full text-center uppercase">
       <Heading className="sr-only">The results are as follow</Heading>
@@ -36,9 +36,7 @@ export const GameResults = ({
           <OptionElement>{icons[choice]}</OptionElement>
         </div>
       </SelectedElement>
-      <Article className="col-start-1 col-span-full row-start-2 mt-16 md:col-start-2 md:row-start-1 md:col-span-1 md:mt-0">
-        <Heading className="sr-only">{details}</Heading>
-        <p className="text-5xl font-bold">{message}</p>
+      <ResultsManager {...{ choice, computerChoice }}>
         <button
           onClick={() => setChoice(null)}
           type="button"
@@ -46,7 +44,7 @@ export const GameResults = ({
         >
           Play again
         </button>
-      </Article>
+      </ResultsManager>
       <SelectedElement title="The house picked">
         <div>
           <OptionElement>{icons[computerChoice]}</OptionElement>
