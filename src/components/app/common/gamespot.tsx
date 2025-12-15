@@ -60,7 +60,7 @@ export const GameSpot = () => {
             ["rules", "Rules"],
           ].map(([path, text]) => (
             <Link
-              className="p-4 px-6 border-2 b-gray-600 rounded-lg"
+              className="p-4 px-6 border-2 b-gray-600 rounded-lg active-button"
               to={path}
               key={text}
             >

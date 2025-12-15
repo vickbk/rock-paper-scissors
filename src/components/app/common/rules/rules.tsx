@@ -12,6 +12,7 @@ export const Rules = () => {
       className="min-h-screen min-w-screen md:min-h-auto md:min-w-auto m-auto md:rounded-lg grid place-items-center"
       onClose={() => navigate("../")}
     >
+      <title>Rules | Rock Paper Scissors</title>
       {game ? <PerGame game={game} /> : <AllGames />}
     </CustomDialog>
   );

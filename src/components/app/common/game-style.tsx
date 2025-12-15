@@ -7,6 +7,7 @@ export const GameStyle = () => {
   const games = [GAMES.default, GAMES.advanced];
   return (
     <Article className="text-center grid gap-4 p-4 grid-rows-[auto_1fr_auto] min-h-screen">
+      <title>Choose | Rock Paper Scissors</title>
       <Heading className="uppercase font-semibold text-4xl">
         Choose your game style
       </Heading>

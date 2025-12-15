@@ -23,6 +23,7 @@ export const DefaultGame = ({ setPlayed }: { setPlayed: () => void }) => {
   };
   return (
     <>
+      <title>Play | Rock Paper Scrissors</title>
       {!choice && (
         <GameOptions
           choices={CHOICES}

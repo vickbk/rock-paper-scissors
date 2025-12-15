@@ -26,6 +26,7 @@ export const AdvancedGame = ({ setPlayed }: { setPlayed: () => void }) => {
   };
   return (
     <>
+      <title>Play | Rock Paper Scissors Spock Lizard</title>
       {!choice && (
         <div className="md:translate-y-12">
           <GameOptions choices={CHOICES} start={90} setChoice={onPlay}>
