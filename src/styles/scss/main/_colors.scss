@@ -4,20 +4,33 @@
 @use "sass:list";
 
 $colorsMap: (
-  blue-900: 209 23% 22%,
-  blue-950: 207 26% 17%,
-  grey-950: 200 15% 8%,
-  grey-400: 0 0% 50%,
-  grey-50: 0 0% 99%,
+  // primary
+  gold-500: 39 89% 49%,
+  gold-600: 28 76% 44%,
+  blue-500: 230 89% 62%,
+  blue-700: 229 64% 46%,
+  red-600: 349 71% 52%,
+  red-800: 347 75% 35%,
+  purple-600: 261 73% 60%,
+  purple-700: 261 51% 44%,
+  light-blue-400: 189 59% 53%,
+  light-blue-500: 194 58% 42%,
+
+  // Neutral
+  navy-900: 229 25% 31%,
+  gray-600: 246 11% 37%,
+  bg-start: 214 47% 23%,
+  bg-end: 237 48% 15%,
+
   white: 0 100% 100%,
   background: var(--background),
-  foreground: var(--foreground),
+  foreground: var(--foreground)
 );
 
-$primary-color: map.get($colorsMap, grey-50);
-$link-color: map.get($colorsMap, blue-950);
-$text-color: map.get($colorsMap, grey-950);
-$accent-color: map.get($colorsMap, blue-950);
+$primary-color: map.get($colorsMap, navy-900);
+$link-color: map.get($colorsMap, blue-500);
+$text-color: map.get($colorsMap, white);
+$accent-color: map.get($colorsMap, blue-500);
 
 $exluded-variables: background foreground;
 
@@ -29,8 +42,8 @@ $exluded-variables: background foreground;
       }
     }
   }
-  --background: var(--grey-50);
-  --foreground: var(--grey-950);
+  --background: #{$primary-color};
+  --foreground: #{$text-color};
   --accent-color: #{$accent-color};
   --link-color: #{$link-color};
 
@@ -38,8 +51,8 @@ $exluded-variables: background foreground;
   --element-bg: var(--white);
   --input: var(--grey-400);
   @media (prefers-color-scheme: dark) {
-    --background: var(--blue-950);
-    --foreground: var(--white);
+    // --background: var(--background);
+    // --foreground: var(--foreground);
 
     // project specific
     --element-bg: var(--blue-900);
@@ -47,8 +60,8 @@ $exluded-variables: background foreground;
   }
   &[theme="dark"],
   *[theme="dark"] {
-    --background: var(--blue-950);
-    --foreground: var(--white);
+    // --background: var(--background);
+    // --foreground: var(--foreground);
 
     // project specific
     --element-bg: var(--blue-900);
@@ -56,8 +69,8 @@ $exluded-variables: background foreground;
   }
   &[theme="light"],
   *[theme="light"] {
-    --background: var(--grey-50);
-    --foreground: var(--grey-950);
+    // --background: var(--background);
+    // --foreground: var(--foreground);
     --accent-color: #{$accent-color};
     --link-color: #{$link-color};
 

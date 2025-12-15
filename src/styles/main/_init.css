@@ -1,42 +1,12 @@
 :root {
-  /* Primary */
-  /* --red: 14 86% 42%;
-  --green: 159 69% 38%; */
-
-  /* --light-slate-blue: 252 100% 67%;
-  --light-royal-blue: 241 81% 54%; */
-
-  /* --violet-blue: 256 72% 46%;
-  --persian-blue: 241 72% 46%; */
-
-  /* Neutral */
-
-  /* --white: 0 0% 100%;
-  --pale-blue: 221 100% 96%;
-  --light-lavender: 241 100% 89%;
-  --dark-gray-blue: 224 30% 27%; */
-
-  /* System */
-  /* --background: var(--pale-blue);
-  --foreground: var(--dark-gray-blue); */
-
-  /* accent colors */
-  /* --accent-color: var(--blue-300);
-  --link-color: var(--blue-300); */
-  /* @media (prefers-color-scheme: dark) {
-    --background: var(--blue-950);
-    --foreground: var(--grey-50);
-  } */
-
-  /* Fonts */
-  --ff-plus-jakarta: "Plus Jakarta Sans", sans-serif;
+  --ff-barlow: "Barlow Semi Condensed", sans-serif;
 }
 
 @theme inline {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
-  --font-sans: var(--ff-plus-jakarta);
-  --font-mono: var(--ff-plus-jakarta);
+  --font-sans: var(--ff-barlow);
+  --font-mono: var(--ff-barlow);
 }
 
 /* Styles for users who prefer reduced motion */
@@ -49,11 +19,12 @@
 }
 
 body {
-  background-color: hsl(var(--background));
+  background: linear-gradient(hsl(var(--bg-start)), hsl(var(--bg-end)));
+  /* background-color: hsl(var(--background)); */
   color: hsl(var(--foreground));
   font-family: var(--ff-sans);
   line-height: 1.6;
-  @apply min-h-screen flex flex-col transition-colors duration-300;
+  @apply min-h-screen grid place-items-center transition-colors duration-300;
 }
 
 button {
@@ -101,4 +72,26 @@ dialog {
 
 .rounded-y-full {
   @apply rounded-t-full rounded-b-full;
+}
+
+.active-button {
+  @apply transition-transform duration-300;
+  &:active,
+  &:focus,
+  &:hover {
+    &:not(:disabled) {
+      @apply opacity-80 outline-2;
+    }
+  }
+  &:hover,
+  &:focus {
+    &:not(:disabled) {
+      @apply scale-105;
+    }
+  }
+  &:active {
+    &:not(:disabled) {
+      @apply scale-95;
+    }
+  }
 }

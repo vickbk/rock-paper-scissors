@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { CommonContainer } from "./common-container";
-import setMemoItem from "@/app/lib/memorization/set-item";
-import getMemoItem from "@/app/lib/memorization/get-item";
 import { SROnly } from "../shared/SROnly";
+import getMemoItem from "../../libs/memorization/get-item";
+import setMemoItem from "../../libs/memorization/set-item";
 
 export const Header = () => {
   const [darkTheme, setDarkTheme] = useState(false);

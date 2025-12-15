@@ -1,6 +1,6 @@
 "use client";
 import {
-  DetailsHTMLAttributes,
+  type DetailsHTMLAttributes,
   forwardRef,
   useEffect,
   useImperativeHandle,
