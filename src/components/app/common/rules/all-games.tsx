@@ -22,7 +22,7 @@ export const AllGames = () => {
       ))}
       <Link
         to={"/game"}
-        className="justify-self-center md:justify-self-end md:row-start-1 "
+        className="justify-self-center md:justify-self-end md:row-start-1 active-button p-4 rounded-full"
       >
         <SROnly>Go back to game selection</SROnly>
         <img src="/assets/images/icon-close.svg" alt={""} />

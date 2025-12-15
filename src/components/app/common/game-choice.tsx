@@ -11,7 +11,7 @@ export const GameChoice = ({
   const transY = (100 - Math.round(Math.sin(degToRad(angle)) * 100)) / 2;
   return (
     <li
-      className={`absolute size-1 choice outline`}
+      className={`absolute size-1 choice`}
       data-left={`${transX}%`}
       data-top={`${transY}%`}
       style={

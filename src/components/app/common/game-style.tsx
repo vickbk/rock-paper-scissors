@@ -24,7 +24,7 @@ export const GameStyle = () => {
         ))}
       </div>
       <Link
-        className="justify-self-center p-4 px-8 outline-2 out-gray-600 rounded-lg uppercase font-semibold"
+        className="justify-self-center p-4 px-8 outline-2 active-button out-gray-600 rounded-lg uppercase font-semibold"
         to={"rules"}
       >
         Learn more

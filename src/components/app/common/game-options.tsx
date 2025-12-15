@@ -25,7 +25,7 @@ export const GameOptions = ({
             <button
               onClick={() => setChoice(choice)}
               type="button"
-              className=" absolute -translate-1/2"
+              className=" absolute -translate-1/2 active-button rounded-full"
             >
               {ICON}
             </button>

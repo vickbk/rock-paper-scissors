@@ -37,7 +37,7 @@ export const GameResults = ({
         <button
           onClick={() => setChoice(null)}
           type="button"
-          className="foreground c-background p-4 px-16 rounded-lg uppercase font-semibold mt-8"
+          className="foreground c-background p-4 px-16 rounded-lg uppercase font-semibold mt-8 active-button"
         >
           Play again
         </button>
